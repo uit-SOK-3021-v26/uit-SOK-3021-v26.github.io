@@ -2,11 +2,11 @@
 
 ## Course Plan 
 
-The lecture and seminar plan contain information about the timing, topics, course instructor, as well as resources/tasks for each topic.
+The lecture and seminar plan contains information about the timing, topics, course instructor, as well as resources/tasks for each topic.
 
 - [Forelesningsplan](forelesningsplan.html){:target="blank"}
 
-[Timeplan](https://timeplan.uit.no/emne_timeplan.php?sem=25v&module[]=SOK-3021-1#week-50){:target="blank"} på timeplan.uit.no
+[Timeplan](https://tp.educloud.no/uit/timeplan/timeplan.php?id%5B%5D=SOK-3021%2C1&type=course&sem=26v&campus=&hide_old=0){:target="blank"} på timeplan.uit.no
 
 
 
@@ -14,7 +14,7 @@ The lecture and seminar plan contain information about the timing, topics, cours
 
 This course provides a basic introduction to time series analysis. The focus is on providing students with the tools necessary to analyze, model, and forecast economic and financial data that evolves overtime. Emphasis will be placed on both univariate and multivariate time series models, as well as practical applications using the R software environment for statistical computing and graphics. By the end of the course, students should have a clear understanding of the basic techniques and models of time series analysis and be able to apply them to a variety of time series data.
 
-See full description [here](https://uit.no/utdanning/emner/emne/859434/sok-3021)
+See full description [here](https://uit.no/utdanning/emner/emne/906280/sok-3021)
 
 ## Instructors
 - [Dejene G.,Kidane](https://uit.no/ansatte/dejene.g.kidane){:target="blank"} (fagansvarlig)
