@@ -1,44 +1,24 @@
 {% include navbar.html %}{% include top-box.html %}
-# Course Plan SOK-3021 Economic Analysis of Time Series
+# Course Plan SOK-3021 
 
 | Session  | Date | To do                                            |
 |------------------|---------|------------------------------------------------------------------|
-| *Preparation*    |         | We use the open-source programming software R, along with its graphical user interface, RStudio, for all the estimations. We highly recommend you download these onto your personal computer and spend some time acquainting yourself with the RStudio interface. Download R from [here](https://cloud.r-project.org/){:target="blank"}, and RStudio from [here](https://posit.co/download/rstudio-desktop/){:target="blank"}. Alternatively, you can access R through the Jupyter notebook interface using your web-browser [here](https://jupyter.uit.no){:target="blank"}. Use your UiT username and password.   |
+| *Preparation*    |         | We use the open-source programming software R, along with its graphical user interface, RStudio, for all the estimations. We highly recommend you download these onto your personal computer. Download R from [here](https://cloud.r-project.org/){:target="blank"}, and RStudio from [here](https://posit.co/download/rstudio-desktop/){:target="blank"}. Alternatively, you can access R through the Jupyter notebook interface using your web-browser [here](https://jupyter.uit.no){:target="blank"}. Use your UiT username and password.   |
 |                  |          | Our textbook is: [Principles of Econometrics](http://principlesofeconometrics.com/poe5/poe5.html){:target='blank'}, 5th Edition (POE5), Wiley - 2018. Available at the campus bookstore Akademika. Buy the book! You will not manage the course without it. |
 | **Resources** |            | The 4th edition of our textbook has an [online version with R code](https://bookdown.org/ccolonescu/RPoE4/){:target='_blank_'}. There is an online book called [Introduction to econometrics with R](https://www.econometrics-with-r.org/index.html){:target='_blank_'}.  When you are on the UiT network, you have access to [Applied Econometrics with R](https://link.springer.com/book/10.1007%2F978-0-387-77318-6){:target='_blank_'}. They have a [web-page](https://eeecon.uibk.ac.at/~zeileis/teaching/AER/){:target='_blank_'}.  |
 |                  |         | The ultimate resource for online books on R is [The big book of R](https://www.bigbookofr.com/){:target='_blank_'}. |
-| 08/01 |     |  Introduction: What is time series? |
-|||[Lecture notes pdf](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/SOK_3021_Introduction_Time_series.pdf), [Lecture notes quarto file](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/SOK_3021_Introduction_Time_series.qmd)|
-|||[lags](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/lags.R)|
-|||[R codes from class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Lag.time.series.R)|
-| 09/01 |     |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
+| 1 |  07/01   |  Introduction to Time Series Analysis? |
+| 2 | 14/01    |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
 |  |     | [R code for Chapter 9](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/chapter_9.R)  |
-|14/01||continue with chap 09|
-|16/01||continue with chap 09|
-|  |     | [The pdf from the class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Forecasting.pdf)  |
-| 21/01 |     |  Chapter 12: Regression with Time-Series Data: Non-Stationary Variables |
-|  |     |[R codes for chapter 12](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/chapter_12.R)   |
-|||| 
-|||[Exercise](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/SOK_3021_Interpretation-of-FDL-model.pdf), and if you wantthe [Quarto file](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/SOK_3021_Interpretation%20of%20FDL%20model.qmd)|
-| 23/01 |     |  continue with chap 12 |
-|28/01 ||Do exercise: Q12.7, 12.8, 12.10 and 12.14 (p. 592 -593, POE%)|
-| |     | [R codes from the class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Exercise_3_solution.R)  |
-| 30/01 |     | continue with chap 12  |
-|||[R codes from the class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Cointegration.R)|
-| 04/02 |     | [R codes for chap 13](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Chapter_13.R)  |
-|||[R codes from the class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Chap_13-Rcodes.R)|
-|  |     | Do exercise: Q 13.5, 13.6, and 13.9 (p. 592 -593, POE%) |
-| 11/02 |     | [R code from class](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/VAR_model.R) |
-| 13/02 |     | [R codes for for chap 14](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Chapter_14.R)  |
-| 18/02 |     | Do exercise: Q14.8, 14.10, 14.11 and 14.14 (p. 627 -631, POE%)  |
-| 20/02 |     |   |
-|Deadline| 24/02, 16:00|[Assignment](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/SOK-3021_Assignment.pdf)|
-| 25/02 |     |   |
-| 27/02 |     |   |
-| |     |   |
-| |     |   |
-| |     |   |
-|25/03 |     | Skriftlig skoleeksamen (WISEFLOW) |
+|3|||
+|4|||
+|5 |     |   |
+|6 |     |   |
+| 7|     |   |
+|8|      |   |
+| 9|     |   |
+| 10|    |   |
+|27/04 |     | Skriftlig skoleeksamen (WISEFLOW) |
 
 
 
