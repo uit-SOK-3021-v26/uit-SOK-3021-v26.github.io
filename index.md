@@ -23,20 +23,17 @@ See full description [here](https://uit.no/utdanning/emner/emne/906280/sok-3021)
 
 ## Curriculum
 
-Textbook: [Principles of Econometrics](https://principlesofeconometrics.com/poe5/poe5.html) 5th Edition (POE5), Wiley - 2018. Available at the campus bookstore Akademika.
+Curriculum: Chapters 9, 12, 13, and 14 from [Principles of Econometrics](https://principlesofeconometrics.com/poe5/poe5.html) 5th Edition (POE5), Wiley - 2018. The textbook is available at the campus bookstore Akademika.
 
-By R. Carter Hill, William E. Griffiths and Guay C. Lim. POE5 is an introductory book for students in economics and finance, as well as students in accounting, agricultural economics, marketing, public policy, sociology, law and political science. It assumes that students have a formal background with courses in the principles of economics/microeconomics, and elementary mathematics and statistics.
+Principles of Econometrics by R. Carter Hill, William E. Griffiths, and Guay C. Lim. POE5 is an introductory book for students in economics and finance, as well as students in accounting, agricultural economics, marketing, public policy, sociology, law and political science. It assumes that students have a formal background with courses in the principles of economics/microeconomics, and elementary mathematics and statistics.
 
-Curriculum: Chapters 09, 12, 13 and 14.
 
 ## Announcements
 
 Announcements and messages are posted in Canvas.
 
 ## Home Assignments, obligatory or not?
-The course includes two assignments, and you will present one of them orally in class. Which assignment requires an oral presentation will be decided by a coin toss.
-To be eligible for the final exam, you must complete both assignments and deliver the oral presentation.
-
+This course includes one mandatory assignment, which must be presented orally. Completion of both the assignment and its presentation is required to be eligible for the final exam.
 
 ## Administrative Questions
 
