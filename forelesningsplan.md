@@ -7,9 +7,10 @@
 |                  |          | Our textbook is: [Principles of Econometrics](http://principlesofeconometrics.com/poe5/poe5.html){:target='blank'}, 5th Edition (POE5), Wiley - 2018. Available at the campus bookstore Akademika. Buy the book! You will not manage the course without it. |
 | **Resources** |            | The 4th edition of our textbook has an [online version with R code](https://bookdown.org/ccolonescu/RPoE4/){:target='_blank_'}. There is an online book called [Introduction to econometrics with R](https://www.econometrics-with-r.org/index.html){:target='_blank_'}.  When you are on the UiT network, you have access to [Applied Econometrics with R](https://link.springer.com/book/10.1007%2F978-0-387-77318-6){:target='_blank_'}. They have a [web-page](https://eeecon.uibk.ac.at/~zeileis/teaching/AER/){:target='_blank_'}.  |
 |                  |         | The ultimate resource for online books on R is [The big book of R](https://www.bigbookofr.com/){:target='_blank_'}. |
+||||
 | 1 |  07/01   |  Introduction to Time Series Analysis? |
+||||
 | 2 | 14/01    |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
-|  |     | [R code for Chapter 9](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/chapter_9.R)  |
 |3|||
 |4|||
 |5 |     |   |
