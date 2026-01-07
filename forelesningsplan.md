@@ -10,6 +10,7 @@
 ||||
 | 1 |  07/01   |  Introduction to Time Series Analysis? |
 |||[R Quarto](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK_3021_Introduction.qmd), [pdf](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK_3021_Introduction.pdf), [ppt](https://uit.instructure.com/courses/41541/files?preview=3962542)|
+|||[R codes from the lecture](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/Rcode_class.R)|
 ||||
 | 2 | 14/01    |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
 |3|||
