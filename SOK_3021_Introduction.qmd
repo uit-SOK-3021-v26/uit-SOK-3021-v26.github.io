@@ -1,0 +1,708 @@
+---
+title: "SOK-3021 Økonomisk analyse av tidsserier"
+description: Time series 
+date: today # other options: now, last-modified
+author:
+  - name: Dejene, G. 
+#url: 
+affiliation: UiT The Arctic University of Norway 
+affiliation-url: https://uit.no/ansatte/dejene.g.kidane
+title-block-banner: true
+#title-block-banner: "#562457" or  #"#FFDDFF"  or "red"
+format:
+  pdf:
+    theme: flatly
+    code-fold: false
+    toc: false   #automatically generated table of contents
+    toc-depth: 2 #option to specify the number of section levels to include in the table of contents. The default is 3 
+    toc-location: right # left -for left, the defualt is right , body for body 
+    number-sections: False
+    self-contained: true
+    html-math-method: katex
+################
+link-external-icon: true
+link-external-newwindow: true
+link-external-filter: '^(?:http:|https:)\/\/www\.trail lecture\.org\/custom'
+#bibliography: References_Asymmetric_PT.bib
+#link-citations: yes
+#csl: apa-single-spaced.csl
+
+---
+  
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+
+# Course Description, curriculum, and Assessments 
+
+## Course Description:
+
+- This course provides a basic introduction to time series analysis, with a focus on economic and financial data.
+
+- Students will learn how to analyze, model, and forecast data that evolves over time.
+
+- The course covers both univariate and multivariate time series models.
+
+- Emphasis is placed on practical applications using R for statistical computing and data visualization.
+
+## Course Curriculum: 
+
+- In this course, we will cover the four chapters from the Principles of Econometrics.5th Edition (POE5), Wiley - 2018. 
+
+- The four chapters include: 
+
+  - **Chapters 9:** Regression with Time-Series Data: Stationary Variables 
+ 
+  - **Chapter 12:** Regression with Time-Series Data: Nonstationary Variables
+
+  - **Chapter 13:**Vector Error Correction and Vector Autoregressive Models
+
+  - **Chapter 14:** Time-Varying Volatility and ARCH/GARCH Models
+
+
+
+## Assessments: Assignment and Exam  
+
+**Assignment:**
+
+- This course includes one mandatory assignment (which must be presented orally). 
+
+- Completion of both the assignment & its presentation is required to be eligible for the final exam.
+
+- Students are required to find their own time series data and apply the full time series modeling procedure.
+
+- Submission deadline: At the end of the course
+
+
+## Assessments: Assignment and Exam 
+
+**School Exam:**
+
+- Written school exam (Date: 27/04 at Kl 09:00)
+
+- **Exam Type:** Closed part + Open part 
+
+- **Closed Exam (60-70%):**
+
+   - True/False
+                
+   - Multiple Choice
+                
+   - Fill in the blank's questions 
+
+- **Open Part (30-40%):**
+
+  - Designed to test your empirical ability  
+
+
+\newpage 
+
+# Introduction to Time Series Analysis
+
+## Type of Data
+
+In economics, we  often work with three types of data. 
+
+  1. Cross-sectional data
+  
+  2. Time series data
+  
+  3. Pooled/Panel data 
+
+
+## Cross-sectional Data:
+
+
+Cross-sectional data are data on one or more variables collected from multiple units at the same point in time.
+
+Examples:
+
+- Income, educational level, age, and gender of 1,000 households in Norway in 2025
+
+- Health indicators (e.g., BMI, smoking status) of individuals surveyed once 
+
+- Test scores of students from different schools in the same academic year , etc. 
+
+
+## Time Series Data:
+
+- A time series is a set of observations on the values that a variable takes at different times.
+
+- It is collected at a regular time intervals, such as daily, weekly, monthly, quarterly, annually.
+
+**Examples:**
+
+- GDP of Norway, 1960-2025
+
+- Monthly inflation rate & unemployment rate in Norway, 2000 - 2025, etc.
+
+
+## Pooled/Panel Data 
+
+- Pooled data is a combination of both cross-sectional & time series data. 
+
+- It is data collected from multiple units observed over time.
+
+- Panel/longitudinal data is a special type of pooled data in which the same cross-sectional unit (say , a family or firm) is surveyed over time. 
+
+**Examples:**
+
+- Household panels tracking consumption and demographics over time
+
+- Country-level macroeconomic indicators (e.g., GDP, inflation) observed over several decades, etc.
+ 
+
+
+# Time Series Data
+
+- Time series data observe the same variable over multiple time periods.
+
+- Such observations may be denoted by $y_1, y_2, ...y_t..., y_T$ since data are usually collected at discrete points in time
+
+
+
+# Features of Time Series Data
+
+- Time-series data have a natural ordering  according to time 
+
+- Time-series observations on a given economic unit, observed over a number of time periods, are likely to be correlated
+
+- That is, what happens today may depend on what happened yesterday
+
+- In time series data, there is the mutual dependence between the observations, generally called SERIAL CORRELATION OR AUTOCORRELATION observation at time t
+
+
+# Time Series Analysis
+
+- In time series analysis, we analyze the past behavior of a variable in order to predict its future behavior.
+
+- Businesses are often very interested in forecasting time series variables since social and economic conditions are constantly changing over time. 
+
+- Time Series Analysis, using statistical methods, allows to enhance comprehension and predictions on any quantitative variable of interest (sales, demand of products, financial performance indicators, logistics, etc.)
+
+
+
+# Area of Applications of Time Series Data
+
+The fields of application of Time series Analysis are numerous: Demand Planning is one of the most common application, however, from industry to industry there are 
+other possible uses. For instance:
+
+(a).  Economics: GDP, monthly unemployment rates, inflation   
+           rates, stock market prices, sales, prices, etc.
+           
+(b). Epidemiology: the number of influenza cases observed over 
+            sometime period, the number of COVID-19 cases and deaths, etc.
+            
+(c). Social sciences: population series, such as birthrates, school 
+         enrollments, etc.
+         
+(d). Transport: Number of traffic accidents per day, month, or year, 
+          number of passengers traveling through airports each month or year, etc
+          
+(e). Global warming, CO2 concentration in the atmosphere in 2050, etc.
+
+
+
+# Forecasting 
+
+- Once someone said: 
+
+     “Forecasting is the art of saying what will happen in the   
+      future and then explaining why it didn’t“
+
+- The reality is that forecasting is a really tough task, and you can do really bad, 
+ 
+-  History is full of examples of «bad forecasts», just like IBM Chairman’s famous quote in 1943: “there is a world market for maybe five computers in the future.”
+
+- But we can definitely reduce uncertainty and improve the accuracy of our forecasts
+
+
+
+
+# Graphical Analysis: Time Plot
+
+
+
+```{r,echo=FALSE}
+# Load GDP of Norway 
+
+#install.packages("WDI")
+library(WDI)
+library(tidyverse)
+
+norway_gdp <- WDI(
+  indicator = "NY.GDP.MKTP.CD",
+  country   = "NO",
+  start     = 1960,     # or whichever start year you want
+  end       = 2024      # or the most recent year available
+)
+
+# library(httr)
+# library(jsonlite)
+# 
+# url <- "https://api.worldbank.org/v2/country/NO/indicator/NY.GDP.MKTP.CD?format=json&per_page=500"
+# res <- GET(url)
+# 
+# data_json <- fromJSON(rawToChar(res$content))
+# gdp_data <- data_json[[2]]  # the second element has the observations
+# head(gdp_data)
+
+
+gdp <- norway_gdp %>% as_tibble() %>%  arrange(year) %>% 
+  select(year,NY.GDP.MKTP.CD) %>% 
+  rename(GDP=NY.GDP.MKTP.CD) %>% mutate(GDP=GDP/(10^9))
+
+#head(gdp)
+
+
+gdp %>%
+  ggplot(aes(x = year, y = GDP)) +
+  geom_line(color = "blue") +
+  theme_bw() +
+  scale_x_continuous(
+    breaks = seq(1960, 2024, by = 10)
+  ) +
+  scale_y_continuous(
+    limits = c(0, NA),
+    breaks = seq(0, max(gdp$GDP, na.rm = TRUE), by = 100)
+  ) +
+  xlab("Year") +
+  ylab("Billions of current US $") +
+  ggtitle("GDP of Norway ")
+
+
+```
+
+- What do you notice about the movement of GDP over time?
+
+- Can you see periods of faster or slower growth?
+
+
+```{r,echo=FALSE}
+# load monthly inflation rate  data of Norway 
+
+library(readxl)
+library(httr)
+
+# Raw GitHub URL
+url <- "https://raw.githubusercontent.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/main/inflation_Norway.xlsx"
+
+# Download to temporary file
+temp_file <- tempfile(fileext = ".xlsx")
+httr::GET(url, write_disk(temp_file, overwrite = TRUE))
+
+# Read Excel into R
+ inflation_Norway <- read_excel(temp_file, sheet = 2)  
+
+# Inspect
+#head( inflation_Norway)
+
+
+
+ inflation_Norway %>%
+  mutate(
+    date = as.Date(paste0(substr(Date, 1, 4), "-", substr(Date, 6, 7), "-01"))
+    ) %>% 
+
+ggplot(aes(x = date, y = inflation_rate)) +
+  geom_line(color = "blue") +
+  theme_bw() +
+  labs(
+    title = "Monthly Inflation in Norway",
+    x = "Year",
+    y = "Inflation rate (%)"
+  ) +
+  scale_x_date(
+    date_breaks = "5 years",   # show tick every 5 years
+    date_labels = "%Y"
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, max(inflation_Norway$inflation_rate, na.rm = TRUE), by = 5)
+  )
+
+ 
+
+
+```
+
+- Does inflation change smoothly or abruptly?
+
+
+```{r,echo=FALSE}
+ library(lubridate)
+
+inflation_Norway %>%
+  mutate(
+    date = as.Date(paste0(substr(Date, 1, 4), "-", substr(Date, 6, 7), "-01")),
+    year = year(date)
+  ) %>%
+  filter(year == c(2025)) %>%
+  ggplot(aes(x = date, y = inflation_rate)) +
+  geom_line(color = "blue") +
+  theme_bw() +
+  labs(
+    title = "Monthly Inflation in Norway (2025)",
+    x = "Month",
+    y = "Inflation rate (%)"
+  ) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b"
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, ceiling(max(inflation_Norway$inflation_rate, na.rm = TRUE)), by = 5)
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ 
+
+```
+
+
+```{r,echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+
+inflation_Norway %>%
+  mutate(
+    date = as.Date(paste0(substr(Date, 1, 4), "-", substr(Date, 6, 7), "-01")),
+    year = year(date),
+    month = month(date, label = TRUE)
+  ) %>%
+  filter(year == 2025) %>%
+  ggplot(aes(x = month, y = inflation_rate)) +
+  geom_col(fill = "skyblue", color = "blue", width = 1) +  # width = 1 → bars touch
+  theme_bw() +
+  labs(
+    title = "Monthly Inflation in Norway (2025)",
+    x = "Month",
+    y = "Inflation rate (%)"
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, ceiling(max(inflation_Norway$inflation_rate, na.rm = TRUE)), by = 5)
+  )
+
+```
+
+
+
+
+# Components of a Time Series: Trend, cycles and seasonality 
+
+**Trend** 
+
+- The general direction in which the series 
+  is running during a long period
+
+- A TREND exists when there is a long-term
+ increase or decrease in the data.
+
+- It does not have to be necessarily linear
+ (could be exponential or others functional
+ form).
+
+
+```{r,echo=FALSE}
+gdp %>%
+  ggplot(aes(x = year, y = GDP)) +
+  geom_line(color = "blue") +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  theme_bw() +
+  scale_x_continuous(
+    breaks = seq(1960, 2024, by = 10)
+  ) +
+  scale_y_continuous(
+    limits = c(0, NA),
+    breaks = seq(0, max(gdp$GDP, na.rm = TRUE), by = 100)
+  ) +
+  xlab("Year") +
+  ylab("Billions of current US $") +
+  ggtitle("GDP of Norway with linear trend ")
+
+```
+
+
+
+```{r,echo=FALSE}
+#Add a smoother for trends
+inflation_Norway %>%
+  mutate(
+    date = as.Date(paste0(substr(Date, 1, 4), "-", substr(Date, 6, 7), "-01"))
+    ) %>% 
+ggplot(aes(x = date, y = inflation_rate)) +
+  geom_line(color = "blue") +
+  geom_smooth(method = "lm", color = "red", se = FALSE) + # lm=loess
+  theme_bw() +
+  labs(
+    title = "Monthly Inflation in Norway with a linear Trend",
+    x = "Year",
+    y = "Inflation rate (%)"
+  )
+
+```
+
+
+**SEASONAL EFFECTS**
+
+- Short-term fluctuations that occur regularly –
+ often associated with months or quarters
+
+- A SEASONAL PATTERN exists when a
+ series is influenced by seasonal factors (e.g.,
+ the quarter of the year, the month, day of the
+ week). 
+ 
+ - Seasonality is always of a fixed and
+  known period.
+
+
+```{r,echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Simulate daily sales data for 4 weeks
+set.seed(123)
+
+days <- rep(c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"), 4)
+weeks <- rep(1:4, each = 7)
+
+# Simulate sales pattern similar to your example
+sales <- c(
+  130000, 320000, 270000, 280000, 330000, 290000, 150000,
+  140000, 260000, 250000, 270000, 320000, 310000, 140000,
+  145000, 250000, 235000, 240000, 330000, 300000, 150000,
+  160000, 235000, 230000, 250000, 330000, 320000, 160000
+)
+
+df <- data.frame(
+  Day = factor(days, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")),
+  Week = weeks,
+  Sales = sales,
+  DayIndex = 1:28
+)
+
+# Plot
+ggplot(df, aes(x = DayIndex, y = Sales, group = 1)) +
+  geom_line(color = "orange", size = 1) +
+  
+  # Add vertical dashed lines to separate weeks
+  geom_vline(xintercept = c(7, 14, 21), linetype = "dashed") +
+  
+  # Add week labels
+  annotate("text", x = 4, y = 140000, label = "Week 1", color = "blue", size = 5, fontface = "bold") +
+  annotate("text", x = 11, y = 140000, label = "Week 2", color = "blue", size = 5, fontface = "bold") +
+  annotate("text", x = 18, y = 140000, label = "Week 3", color = "blue", size = 5, fontface = "bold") +
+  annotate("text", x = 25, y = 140000, label = "Week 4", color = "blue", size = 5, fontface = "bold") +
+  
+  # Customize axes
+  scale_x_continuous(breaks = 1:28, labels = rep(c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"), 4)) +
+  labs(
+    title = "Seasonal effect example (Weekly seasonality):\nNewspapers Daily Sales",
+    x = NULL,
+    y = "Sales"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10, color = "black"),
+    plot.title = element_text(hjust = 0.5, face = "bold", color = "blue")
+  )
+
+```
+
+
+
+**CYCLE**
+
+- Long-term fluctuations that occur regularly in
+ the series A CYCLE is an oscillatory
+ component (i.e. Upward or Downward
+ swings) which is repeated after a certain
+ number of years, so:
+
+- May vary in length and usually lasts several
+ years (from 2 up to 20/30)
+
+- Difficult to detect, because it is often
+ confused with the trend component
+
+
+```{r,echo=FALSE}
+library(lubridate)
+library(zoo)
+# Load sunspot data
+data("sunspot.month")
+
+# Convert to data frame with dates
+ data.frame(
+  date = as.Date(as.yearmon(time(sunspot.month))),
+  sunspots = as.numeric(sunspot.month)
+) %>%  filter(date >="1900-01-01" ) %>% 
+  ggplot(aes(x = date)) +
+  geom_line(aes(y = sunspots), color = "steelblue", size = 0.7) +
+  
+  labs(title = "Monthly Sunspot Numbers ",
+       x = "Year",
+       y = "Sunspots") +
+  theme_minimal() +
+  scale_x_date(date_labels = "%Y", date_breaks = "10 years") +
+  theme(legend.position = "none") 
+  
+```
+
+
+**RESIDUAL**
+
+- Whatever remains after the other components
+  have been taken into account
+
+- The residual/error component is everything
+  that is not considered in previous components
+
+- Typically, it is assumed to be the sum of a set
+  of random factors (e.g. a white noise series)
+  not relevant for describing the dynamics of the
+  series
+
+
+```{r,echo=FALSE}
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Generate white noise: 100 observations
+wn <- rnorm(100, mean = 0, sd = 1)
+
+# Plot white noise series
+plot(wn, type = "l",
+     main = "Example of White Noise Series",
+     xlab = "Time",
+     ylab = "Values",
+     col = "black",
+     lwd = 1.2)
+
+```
+
+The four components above can be combined in the additive time series model as follow: 
+
+$Y_t = T_t+S_t+C_t+R_t$
+
+where $Y_t$ is the actual value, $T_t$ is the trend/long-term movement, $S_t$ is the seasonal component, $C_t$ is syclcical movement, and $R_t$ is the residual/random movement.  
+
+
+
+**Task:** 
+
+- From the R package **fpp2** in R, load the quarterly beer production data in Australia.
+- plot the time series plot of the data
+- find the trend, seasonality, and noise of the the quarterly beer production
+
+
+```{r,echo=TRUE}
+# The time series plot below shows the quarterly beer production in Australia
+library(fpp2)
+# ausbeer
+beer2 <- window(ausbeer, start=1992)
+beer2
+ggplot2::autoplot(beer2) + xlab("Year") + ylab("Megalitres")+theme_bw()
+```
+
+
+The time series decomposition of the quarterly beer production in Australia: 
+
+```{r,echo=TRUE}
+ggplot2::autoplot(decompose(beer2))+theme_bw()
+```
+
+
+
+
+# Some Time series Terms 
+
+
+**Stationary Data** - a time series variable exhibiting no significant upward or downward trend over time.
+
+- A Stationary time series data has constant means, variance and autocovariance overtime.
+
+**Nonstationary Data** - a time series variable exhibiting a significant upward or downward trend over time.
+
+- Non-stationary time series data has means and variances that change over time
+
+
+
+
+```{r,echo=FALSE}
+#browseURL("http://www.principlesofeconometrics.com/poe5/data/def/usdata5.def")
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/usdata5.rdata"))
+
+infn <- ts(usdata5$infn,start = c(1948,1), frequency = 4)
+
+plot.ts(infn, ylab = "inflation, percent (monthly)", xlab = "Time")
+
+
+```
+
+
+```{r,echo=FALSE}
+plot.ts(diff(infn), ylab = "Change in inflation (monthly)", xlab = "Time")
+
+
+```
+
+
+**Notes:**
+
+- The first figure above is non-stationary while the second one is stationary
+
+- A Stationary time series data has constant means, variance and autocovariance overtime. 
+
+- Non-stationary time series data has means and variances that change over time 
+
+
+
+
+
+# Approaching Time Series Analysis
+
+- There are many, many different time series techniques/models.
+
+- It is usually impossible to know which technique will be best for a particular data set.
+
+- It is customary to try out several different techniques and select the one that seems to work best.
+
+- To be an effective time series modeler, you need to keep several time series techniques in your “tool box.”
+
+
+
+
+**Task & Dataset:**
+
+- Download annual CO₂ emissions data from OurWorld in Data: (https://ourworldindata.org/co2-emissions).
+
+- Construct time-series plots of annual CO₂ emissions for the world and for Norway from 1960 t0 2024.
+
+- Describe the main pattern of the plot.
+
+```{r,echo=TRUE}
+#CO2 emission data by country 
+
+# Load necessary library
+library(readr)
+
+# Direct URL to the CO2 emissions dataset (production-based)
+url <- "https://github.com/owid/co2-data/raw/master/owid-co2-data.csv"
+
+# Read the CSV directly into R
+co2_data <- read_csv(url)
+
+# Preview the dataset
+#head(co2_data)
+
+#View(co2_data)
+
+#co2_data %>% filter(year>=1960) %>% filter(country=="Norway")
+
+```
