@@ -9,7 +9,7 @@
 |                  |         | The ultimate resource for online books on R is [The big book of R](https://www.bigbookofr.com/){:target='_blank_'}. |
 ||||
 | 1 |  07/01   |  Introduction to Time Series Analysis? |
-|||[R Quarto](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK_3021_Introduction.qmd), []|
+|||[R Quarto](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK_3021_Introduction.qmd), [pdf](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK_3021_Introduction.pdf), [ppt](https://uit.instructure.com/courses/41541/files?preview=3962542)|
 ||||
 | 2 | 14/01    |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
 |3|||
