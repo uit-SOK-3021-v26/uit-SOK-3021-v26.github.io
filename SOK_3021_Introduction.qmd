@@ -3,7 +3,7 @@ title: "SOK-3021 Økonomisk analyse av tidsserier"
 description: Time series 
 date: today # other options: now, last-modified
 author:
-  - name: Dejene, G. 
+  - name: Dej. 
 #url: 
 affiliation: UiT The Arctic University of Norway 
 affiliation-url: https://uit.no/ansatte/dejene.g.kidane
@@ -704,5 +704,6 @@ co2_data <- read_csv(url)
 #View(co2_data)
 
 #co2_data %>% filter(year>=1960) %>% filter(country=="Norway")
+
 
 ```
