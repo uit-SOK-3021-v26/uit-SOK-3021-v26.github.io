@@ -39,7 +39,7 @@ data <- tibble(
 data
 
 data %>% 
-  mutate(y1=lag(y,1),  # the first lag/ values in the previous period 
+  mutate(y1=lag(y,1),  # the first lag/ the value in the previous period 
          y2=lag(y,2),  # the second lag 
          y_2 = lag(y1)) 
 
@@ -68,3 +68,4 @@ data_clean <- na.omit(data)
 # regression 
 fit <- lm(y~ y1+y2, data = data_clean)
 summary(fit)
+
