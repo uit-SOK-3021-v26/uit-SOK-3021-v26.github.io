@@ -44,7 +44,7 @@ data %>%
          y_2 = lag(y1)) 
 
 # remove NA's 
-data_clean <- na.omit(data)
+ na.omit(data)
 
 
 
@@ -68,4 +68,5 @@ data_clean <- na.omit(data)
 # regression 
 fit <- lm(y~ y1+y2, data = data_clean)
 summary(fit)
+
 
