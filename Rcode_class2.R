@@ -1,5 +1,7 @@
 
-# Load data from the textbook 
+# Load data from the textbook
+# i.e., usmacro
+
 rm(list = ls())
 
 library(tidyverse)
@@ -90,6 +92,7 @@ summary(fit3)
 
 # In this course, we basically and mostly use 
 # option 3, i.e., arima()
+
 
 
 
