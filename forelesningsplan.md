@@ -14,7 +14,7 @@
 ||||
 | 2 | 14/01    |  Chapter 09: Regression with Time-Series Data: Stationary Variables |
 |||[PPT](https://uit.instructure.com/courses/41541/files?preview=3974237)|
-||||
+|||[R code](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/Rcode_class2.R)|
 |3|||
 |4|||
 |5 |     |   |
