@@ -21,3 +21,8 @@ usmacro %>%
   xlab("Year") +
   labs(title = "Figure 9.2a: U.S. Quarterly unemployment rate 1948:Q1 to 2016:Q1")
 
+
+
+
+# autocorrelation function (acf)
+
