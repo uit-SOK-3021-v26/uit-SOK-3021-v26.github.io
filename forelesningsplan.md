@@ -18,7 +18,7 @@
 |3|21/01 | continue with Chap 09 |
 |||[Autocorrelation](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/Autocorrelation.R)|
 |||[ARIMA model](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/ARIMA.pdf)|
-|4|||
+|4|04/02|continue with Chap 09 |
 |5 |     |   |
 |6 |     |   |
 | 7|     |   |
