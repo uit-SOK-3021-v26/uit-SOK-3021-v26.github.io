@@ -45,7 +45,7 @@ arima(usmacro$u, order = c(2,0,2))  %>% forecast(h=10) %>% autoplot + theme_bw()
 
 
 # notice the difference between the following two lines of codes
-arima(usmacro$u, order = c(2,0,0)) %>% forecast(h=10)   # nothing comes, why?
+arima(usmacro$u, order = c(2,0,0)) %>% forecast(h=10)   
 
 # defining u as ts() object 
 u <- ts(usmacro$u, frequency = 4, start = c(1948,1))
@@ -84,6 +84,7 @@ fc2
 autoplot(fc2) + ylab("Unemployment") +
   ggtitle("Forecast unemployment with future GDP growth")+
   theme_bw()
+
 
 
 
