@@ -13,18 +13,19 @@ head(usmacro)
 library(tidyverse)
 library(broom)
 library(forecast)
+
 usmacro %>% dplyr::select(u) %>% Arima(., order=c(0,0,0)) %>% glance()   
 usmacro %>% dplyr::select(u) %>% Arima(., order=c(1,0,0)) %>% glance()
 
-# the auto.arima() function from the forecast package 
-# selects best model based on information criteria , aic and bic 
+# auto.arima() = the auto.arima() function from the forecast package 
 usmacro %>% dplyr::select(u) %>% auto.arima()
-
 auto.arima(usmacro[,"u"], xreg = usmacro[,"g"]) 
+
+## selects best model based on information criteria , aic and bic
 auto.arima(usmacro[,"u"], xreg = usmacro[,"g"], ic = "aic") 
 auto.arima(usmacro[,"u"], xreg = usmacro[,"g"], ic = "bic")
 
-#
+# 
 library(dynlm)
 fit <- dynlm(u~L(u,1)+L(g,0:8),data=ts(usmacro))
 
@@ -98,7 +99,9 @@ cat("Optimal lag length based on BIC: p =", optimal_bic_index[1], ", q =", optim
 best_model_SC <- dynlm(u ~ L(u,1:2 )+L(g,0:4), data = ts(usmacro))
 summary(best_model_SC)
 
-# Serial correlation
+
+# Testing for Serial Correlation
+
 # H0: no correlation/serial correlation 
 # H1: there is correlation 
 
@@ -108,50 +111,28 @@ bgtest(best_model_SC , order=2)
 bgtest(best_model_SC , order=3)
 bgtest(best_model_SC , order=4) 
 
-# eextract the residual 
+# extract the residual 
 res <- resid(best_model_SC )
 
-
-
+# corrorogram 
 ggAcf(res) +
   labs(title = "the residul from the best model")
 
 
-
-
-# Example 9.9 Testing for Granger causality
-
-#H0: x doesn't granger cause y (i.e., x doesn't contribute to the forecast of y)
-
-library(lmtest)
-grangertest(u ~ g, order = 1, data = usmacro)
-grangertest(u ~ g, order = 2, data = usmacro)
-
-#' g does granger cause u
-
-
-
 # Testing for Serial Correlation 
 
-#' Example 9.10, page 439 
-#' 
-
+# Example 9.10, page 439 
 require(dynlm)
 require(mosaic)
-#' Now we must work on the ts objects directly.
-#' 
-#' Create ts data
 
+#' Create ts data
 g <- usmacro %>% dplyr::select(g) %>% ts(., start = c(1948,1), frequency = 4)
 u <- usmacro %>% dplyr::select(u) %>% ts(., start = c(1948,1), frequency = 4)
 
-#using ts() function will help us to let R know it is time series data and to enter
-#time variable
-
-
+#using ts() function will help us to let R know  we are working with 
+# time series data 
 
 #'Estimate ARDL(2,1)
-#
 fit1 <- dynlm(u~L(u,1)+L(u,2)+L(g,1)) 
 summary(fit1)
 
@@ -175,21 +156,6 @@ bgtest(fit1, order=4)
 #' The Durbin-Watson test(the test statistic does not rely on large samples like that of LM test)
 #' , HO:no serial correlation 
 dwtest(fit1)   
-
-
-
-###################
-# Example 9.7 Forecasting unemployment with an ARDL(2,1) model
-
-usmacro.lag <- cbind( u = usmacro[,"u"],
-                      g = usmacro[,"g"],
-                      gLag1 = dplyr::lag(usmacro[,"g"],1))
-
-head(usmacro.lag)
-
-fit2 <- Arima(usmacro.lag[,"u"], order=c(2,0,0), xreg = usmacro.lag[,"gLag1"]) 
-summary(fit2)
-###################
 
 
 
@@ -222,6 +188,18 @@ bgtest(fit2, order=40)
 #' , HO:no serial correlation 
 dwtest(fit2)  #Ho is rejected 
 #conclusion: Model 1 is preferred than model 2.
+
+
+
+# Example 9.9 Testing for Granger causality
+
+#H0: x doesn't granger cause y (i.e., x doesn't contribute to the forecast of y)
+
+library(lmtest)
+grangertest(u ~ g, order = 1, data = usmacro)
+grangertest(u ~ g, order = 2, data = usmacro)
+
+#' g does granger cause u
 
 
 
