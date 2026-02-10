@@ -23,6 +23,7 @@
 |||[Rcodes, lag selection](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/lag_selection_and_serial_correlation.R)|
 ||||
 |5 | 11/02    |  Chapter 12: Regression with Time-Series Data: Non-Stationary Variables  |
+|||[R codes for chapter 12](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/chapter_12.R)|
 |6 |     |   |
 | 7|     |   |
 |8|      |   |
