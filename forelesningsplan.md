@@ -21,7 +21,8 @@
 |4|04/02|continue with Chap 09 |
 |||[R codes,ARIMA](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/ARIMA_Rcode.R)|
 |||[Rcodes, lag selection](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/lag_selection_and_serial_correlation.R)|
-|5 |     |   |
+||||
+|5 | 11/02    |  Chapter 12: Regression with Time-Series Data: Non-Stationary Variables  |
 |6 |     |   |
 | 7|     |   |
 |8|      |   |
