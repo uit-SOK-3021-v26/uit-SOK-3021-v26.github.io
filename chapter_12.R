@@ -24,6 +24,7 @@ load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/usdata5.rdata"
 # ffr	= Federal funds rate, percent (FRED series FEDFUNDS) 
 
 head(usdata5)                                           
+
 br.ts <- ts(usdata5$br, start = c(1954,8), frequency = 12)
 ffr.ts <- ts(usdata5$ffr, start = c(1954,8), frequency = 12)
 infn.ts <- ts(usdata5$infn, start = c(1954,8), frequency = 12)
@@ -74,9 +75,8 @@ round(mean(window(diff(br.ts), start=c(1985,11), end=c(2016,12))),2)
 
 
 
-########################################################
+
 #  Example 12.2 A deterministic trend for wheat yield
-############################################################
 
 rm(list=ls())
 
@@ -107,23 +107,22 @@ fit2 <- lm(rain~t, data = toody5)
 summary(fit2)
 plotCurves(fit2, plotx = "t", type="l", lty=2, main="b) Rain")
 
-#' Alternatively 
 toody5 %>% ggplot(aes(x=dateid01,y=rain))+geom_line()+geom_smooth(method = lm,se=FALSE)
 
 
-#' Let us estimate the relationship between yield and rainfall. 
+#' Find the relationship between yield and rainfall.
+ 
 #' There are two alternatives to estimate the relationship. 
 
-#'############################################
+
 #' Alternative 1: 
-###################################################
+
 #' Just include trend in the regression.
 #' Furthermore, there are decreasing returns to rainfall,so we include RAIN^2 as well as RAIN in the model
 #' leading to the following estimated equation.
 
 fit3 <- lm(y~t+rain+I(rain^2), data = toody5)
 summary(fit3) 
-plotCurves(fit3, plotx = "t", type="l", lty=2, main="a) Yield") 
 
 # If the dependent variable is given in log form
 fit4 <- lm(log(y)~t+rain+I(rain^2), data = toody5)
@@ -131,9 +130,9 @@ summary(fit4) # 12.10
 
 
 
-###########################################################
+
 #  Alternative 2
-#############################################################
+
 #' Detrend Yield, RAIN, and RAIN^2 and 
 #' estimate the detrended model.
 
@@ -269,9 +268,8 @@ par(mfrow=c(1,1))
 
 
 
-#################################
-######## Spurious Regression 
-#######################################
+#  Spurious Regression 
+
 
 #Example 12.3:  Regression with two random walks
 
@@ -317,9 +315,9 @@ Arima(rw1, order = c(1,0,0), xreg=rw2)
 
 
 
-############################################
-########## Unit Root Tests for Stationarity 
-############################################
+
+#   Unit Root Tests for Stationarity 
+
 
 #Ho: unit root (non-stationary) vs H1: stationary
 
@@ -348,13 +346,14 @@ library(dynlm)
 #' Augmented Dickey-Fuller test with intercept, No trend 
 
 #' H0:unit root (non-stationary).
+
+summary(dynlm(d(ffr.ts) ~ L(ffr.ts)+d(L(ffr.ts,1:2)))) 
+summary(dynlm(d(br.ts) ~ L(br.ts)+d(L(br.ts,1:2))))
+
 #' For checking stationary, the usual t-critical values and p-values cannot be used
 #' Instead we compare the t-critical value for the first lag of the dep.var. with the critical value from Table 12.2. (see the Text) 
 #' Reject Ho if tau(t-value) <= t_Cv, (t_Cv=-2.86 at 5% level)
 #' Notice here two augmentation terms have been included for both variables, to account for serial correlation. 
-
-summary(dynlm(d(ffr.ts) ~ L(ffr.ts)+d(L(ffr.ts,1:2)))) 
-summary(dynlm(d(br.ts) ~ L(br.ts)+d(L(br.ts,1:2))))
 
 
 # Example 12.5: Is GDP trend stationary?
@@ -362,18 +361,22 @@ summary(dynlm(d(br.ts) ~ L(br.ts)+d(L(br.ts,1:2))))
 load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/gdp5.rdata"))
 # Obs: 132 quarterly observations, U.S. data from 1984Q1 to 2016Q4
 head(gdp5)
+
 gdp.ts <- ts(gdp5$gdp, start = c(1984,1), frequency = 4)
 
+plot.ts(gdp.ts)
 
 t <- 0:length(gdp.ts)
 t <- ts(t, start = c(1984,1), frequency = 4)
+
 summary(dynlm(d(gdp.ts) ~ t + L(gdp.ts)+d(L(gdp.ts,1:2))))
 
-#' two augmentation terms minimized the SC, eliminated major autocorrelation in the residuals.
+#' two augmentation terms minimized the SC, eliminated major autocorrelation in 
+#' the residuals.
 
 #' H0:unit root, Reject Ho if tau(t-value) <= t_Cv, (t_Cv=-3.41 at 5% level). 
-#' conclusion: tau=-1.999 <=-3.41, 
-#' False. Hence, GDP follows a non-stationary random walk. 
+#' conclusion: tau=-1.999 <=-3.41,  False!
+#'  Hence, GDP follows a non-stationary random walk. 
 #' Thus,there is insufficient evidence to conclude that GDP is trend stationary. 
 
 
@@ -383,9 +386,11 @@ load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/toody5.rdata")
 head(toody5)
 
 yield.ts <- ts(toody5$y, start = 1950, frequency = 1)
+
+plot.ts(yield.ts)
+
 t <- ts(toody5$t, start = 1950, frequency = 1)
 summary(dynlm(d(log(yield.ts)) ~ t + L(log(yield.ts))))
-
 
 
 #' Thus, we reject the null hypothesis of non-stationarity and
@@ -397,21 +402,23 @@ summary(dynlm(d(log(yield.ts)) ~ t + L(log(yield.ts))))
 
 #' Above, we showed that ffr.ts, and br.ts are non-stationary.
 #' To find their order of integration,
-#' we ask the next question: Are their first differences stationary?
+#' we ask the question: Are their first differences stationary?
 #' Their plots fluctuate around zero.
-plot(diff(ffr.ts))
-plot(diff(br.ts))
-#' Given their plots fluctuate around zero, we use Dickey-Fuller test equation with no intercept and no trend.
 
 #' Manually (on levels), p. 581
 summary(dynlm(d(d(ffr.ts)) ~ 0 + L(d(ffr.ts))+d(d(L(ffr.ts)))))
-
 summary(dynlm(d(d(br.ts)) ~ 0 + L(d(br.ts))+d(d(L(br.ts)))))
 
+#' Given their plots fluctuate around zero, we use Dickey-Fuller 
+#' test equation with no intercept and no trend.
+plot(diff(ffr.ts))
+plot(diff(br.ts))
 
-#' Ho:unit root(non-stationary). 
-#' The null is rejected in either series. 
-#' and conclude that both series are stationary at their first difference
+
+#'Conclusion:  
+#' The null is rejected in either series.
+#'  and conclude that both series are stationary at their first difference
+
 #' Hence, we say that the series ffr.ts and br.ts are I(1) because they had to be 
 #' differences once to make them stationary. 
 
@@ -421,7 +428,7 @@ summary(dynlm(d(d(br.ts)) ~ 0 + L(d(br.ts))+d(d(L(br.ts)))))
 #' install.packages("urca")
 library(urca)
 #' helpful link 
-#' https://stats.stackexchange.com/questions/24072/interpreting-rs-ur-df-dickey-fuller-unit-root-test-results
+browseURL("https://stats.stackexchange.com/questions/24072/interpreting-rs-ur-df-dickey-fuller-unit-root-test-results")
 
 ??ur.df
 
@@ -458,9 +465,9 @@ pp.test(br.ts, type = "Z(t_alpha)")
 pp.test(diff(br.ts), type = "Z(t_alpha)")
 
 
-############################################
-##### Cointegration test 
-###########################################
+
+#  Cointegration test 
+
 
 #' Co-integration:- the relationship between I(1) variables 
 #' such as the residuas are I(0)
@@ -499,9 +506,8 @@ johansen <- ca.jo(usdata5[,3:2], ecdet = "const", type = "trace")
 summary(johansen)
 
 
-###########################################
-#####Error Correction Model
-#################################################
+
+#  Error Correction Model
 
 # A relationship between I(1) variables (or co-integration) is often referred to as 
 # long-run relationship while a relationship between I(0) variables is often referred to as a short-run relationship.
