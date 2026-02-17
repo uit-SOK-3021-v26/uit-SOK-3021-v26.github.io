@@ -24,7 +24,8 @@
 ||||
 |5 | 11/02    |  Chapter 12: Regression with Time-Series Data: Non-Stationary Variables  |
 |||[R codes for chapter 12](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/chapter_12.R)|
-|6 |     |   |
+||||
+|6 | 18/02   | continue with Chap 12  |
 | 7|     |   |
 |8|      |   |
 | 9|     |   |
