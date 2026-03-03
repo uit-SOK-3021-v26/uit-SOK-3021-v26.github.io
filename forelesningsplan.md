@@ -28,9 +28,11 @@
 |6 | 18/02   | continue with Chap 12  |
 ||||
 |||[Project Assignment](https://github.com/uit-SOK-3021-v26/uit-SOK-3021-v26.github.io/blob/main/SOK-3021_Assignment.pdf)|
-| 7|     |   |
-|8|      |   |
-| 9|     |   |
+|7|04/03|Chapter 13: Vector Error Correction and Vector Autoregressive Models|
+| |     | [R codes for chapter 13](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Chap_13-Rcodes.R)  |
+||      |   |
+| 8|     | Chapter 14:Time-Varying Volatility and ARCH Models |
+|||[R codes for chapter 14](https://github.com/uit-sok-3021-v-25/uit-sok-3021-v-25.github.io/blob/main/Chapter_14.R)|
 | 10|    |   |
 |27/04 |     | Skriftlig skoleeksamen (WISEFLOW) |
 
